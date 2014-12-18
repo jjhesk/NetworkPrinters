@@ -3,8 +3,8 @@
 require('dotenv').load();
 
 // Require keystone
-var keystone = require('keystone');
-
+var keystone = require('keystone'),
+    restyStone = require("resty-stone");
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
@@ -98,6 +98,11 @@ keystone.set('nav', {
     'jobs': 'jobs'
 });
 
-// Start Keystone to connect to your database and initialise the web server
 
+keystone.set('resty api base address', "/api"); // you can omit this line, it is the same as the default and here for demo only.
+keystone.set('resty meta location', "./routes/api"); // provide the relative path from your project's root, to your Resource metadata folder.
+keystone.set('resty auth type', restyStone.AUTH_TYPE.SESSION); // keep KeystoneJS cookie based session for auth (use in dev only!)
+keystone.set('resty token header', "api-token");
+// Start Keystone to connect to your database and initialise the web server
+//restyStone.start();
 keystone.start();

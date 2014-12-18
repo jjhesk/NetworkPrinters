@@ -3,13 +3,11 @@
  */
 
 var keystone = require('keystone'),
-    Types = keystone.Field.Types;
-
-var Maker = new keystone.List('Maker', {
-    nocreate: false,
-    noedit: false
-});
-
+    Types = keystone.Field.Types,
+    Maker = new keystone.List('Maker', {
+        nocreate: false,
+        noedit: false
+    });
 Maker.add({
     makerName: { type: Types.Relationship, ref: 'User', required: true, initial: true},
     phone: { type: String },
@@ -20,7 +18,5 @@ Maker.add({
     createdAt: { type: Date, default: Date.now },
     machineReady: { type: Boolean, default: false }
 });
-
 Maker.defaultColumns = 'machine|20%, makerName, phone|5%, machineReady';
-
 Maker.register();

@@ -30,7 +30,7 @@ License.add({
     licensePerson: { type: Types.Relationship, ref: 'User', label: "License Issued By" }
 });
 
-License.defaultColumns = 'clientID|30%, licensePerson|20%, licenseStatusLive|50%, createdAt|10%';
+License.defaultColumns = 'licensePerson|20%, licenseStatusLive|50%, createdAt|10%';
 
 
 License.schema.pre('save', function (next) {

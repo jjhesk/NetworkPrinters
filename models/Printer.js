@@ -9,7 +9,7 @@ var keystone = require('keystone'),
 
 var Printer = new keystone.List('Printer', {
     map: { name: 'printerName' },
-    autokey: { path: 'slug', from: 'printerName', unique: true }
+    autokey: { path: 'slug', from: 'printerName', unique: true, limit: 10 }
     //autocreate: true
 });
 
@@ -24,7 +24,8 @@ Printer.add({
                 {value: 'sv', label: '802.11b/g'},
                 {value: 'lte', label: 'LTE connection'},
                 {value: 'wired', label: 'Ethernet Cable'}
-            ]
+            ],
+            default: 'wired'
         },
         technology: {
             type: Types.Select,
@@ -35,7 +36,8 @@ Printer.add({
                 { value: 'micro-sla', label: 'Micro-SLA' },
                 { value: 'stereolaser', label: 'Stereolithography (Laser)' },
                 { value: 'fdm', label: 'Fused Deposition Modeling' }
-            ]
+            ],
+            default: 'pip'
         },
         manufacturer: { type: Types.Relationship, ref: 'Company' },
         producedYear: { type: Types.Number, format: false },
@@ -55,7 +57,6 @@ Printer.add({
         materialCost: {type: Types.Money},
         builtEffecticiency: {type: Types.Money}
     }
-
 );
 
 Printer.defaultColumns = 'printerName, manufacturer, producedYear, currentPrice, listed';

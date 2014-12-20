@@ -1,19 +1,18 @@
 /**
- * Created by Hesk on 14年12月17日.
+ * Created by Hesk on 14年12月19日.
  */
 var keystone = require('keystone'),
-    Maker = keystone.list('Maker');
-
+    Taxi = keystone.list('Taxi');
 
 module.exports.default = {
     "httpMethods": "get",
 
     "httpGroupMethods": "get",
     "defaultKey": "_id",
-    "permanentFilter": "machineReady:true",
+    // "permanentFilter": "machineReady:true",
     "columns": {
         "visible": [
-            "makerName"
+            "licensePlate"
         ],
         "no_filter": [
             "_id"

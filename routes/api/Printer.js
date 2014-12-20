@@ -1,19 +1,28 @@
 /**
- * Created by Hesk on 14年12月17日.
+ * Created by Hesk on 14年12月19日.
  */
 var keystone = require('keystone'),
-    Maker = keystone.list('Maker');
-
+    Printer = keystone.list('Printer');
 
 module.exports.default = {
     "httpMethods": "get",
-
     "httpGroupMethods": "get",
     "defaultKey": "_id",
-    "permanentFilter": "machineReady:true",
+   // "permanentFilter": "listed:true",
     "columns": {
         "visible": [
-            "makerName"
+
+            "technology",
+            "manufacturer",
+            "producedYear",
+            "createdAt",
+
+            "materialCost",
+            "builtEffecticiency",
+            "listed",
+            "currentPrice",
+            "printerName"
+
         ],
         "no_filter": [
             "_id"
@@ -32,3 +41,21 @@ module.exports.authorized = {
     "httpGroupMethods": "get",
     "permanentFilter": undefined
 };
+/*
+
+
+"connectivity",
+    "technology",
+    "manufacturer",
+    "producedYear",
+    "countryMaker",
+
+    "createdAt",
+
+    "image",
+    "currentPrice",
+    "materialCost",
+    "builtEffecticiency",
+    "listed"
+
+    */

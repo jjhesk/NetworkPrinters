@@ -5,30 +5,31 @@ var keystone = require('keystone'),
     async = require('async'),
     _ = require('underscore'),
     Job = keystone.list('Job');
+
+var model_construct = function (Q) {
+    if (!Q.budget) throw new Error('budget is missing');
+    if (!Q.material_selection) throw new Error('materialSelection is missing');
+    if (!Q.phone_number) throw new Error('phone is missing');
+    if (!Q.location) throw new Error('location is missing');
+    if (!Q.l) throw new Error('dimension L is missing');
+    if (!Q.w) throw new Error('dimension W is missing');
+    if (!Q.h) throw new Error('dimension H is missing');
+    return {
+        budget: Q.budget,
+        materialSelection: Q.material_selection,
+        phone: Q.phone_number,
+        location: Q.location,
+        isVerified: false,
+        expectDimension: {
+            L: Q.l,
+            W: Q.w,
+            H: Q.h
+        }
+    };
+};
 exports = module.exports = function (req, res) {
     var locals = {
         newPrinter: false
-    };
-    var model_construct = function (Q) {
-        if (!Q.budget) throw new Error('budget is missing');
-        if (!Q.material_selection) throw new Error('materialSelection is missing');
-        if (!Q.phone_number) throw new Error('phone is missing');
-        if (!Q.location) throw new Error('location is missing');
-        if (!Q.l) throw new Error('dimension L is missing');
-        if (!Q.w) throw new Error('dimension W is missing');
-        if (!Q.h) throw new Error('dimension H is missing');
-        return {
-            budget: Q.budget,
-            materialSelection: Q.material_selection,
-            phone: Q.phone_number,
-            location: Q.location,
-            isVerified: false,
-            expectDimension: {
-                L: Q.l,
-                W: Q.w,
-                H: Q.h
-            }
-        };
     };
     async.series([
         function (next) {
@@ -54,9 +55,8 @@ exports = module.exports = function (req, res) {
             });
         },
         function (next) {
-
-            console.log('[api.app.addjob] - Saved new addjob:' + locals.newPrinter);
-            console.log('------------------------------------------------------------');
+            //  console.log('[api.app.addjob] - Saved new addjob:' + locals.newPrinter);
+            //  console.log('------------------------------------------------------------');
             return res.apiResponse({
                 success: true,
                 timestamp: new Date().getTime(),

@@ -6,29 +6,29 @@ var keystone = require('keystone'),
 
 
 module.exports.default = {
-    "httpMethods": "get",
+    'httpMethods': 'get',
 
-    "httpGroupMethods": "get",
-    "defaultKey": "_id",
-    "permanentFilter": "machineReady:true",
-    "columns": {
-        "visible": [
-            "makerName"
+    'httpGroupMethods': 'get',
+    'defaultKey': '_id',
+    'permanentFilter': 'machineReady:true',
+    'columns': {
+        'visible': [
+            'makerName'
         ],
-        "no_filter": [
-            "_id"
+        'no_filter': [
+            '_id'
         ]
     }
 }
 
 module.exports.isAdmin = {
-    "__extends__": "default",
-    "httpMethods": "get",
-    "httpGroupMethods": "get"                // true will result in duplicating httpMethods to httpGroupMethods
+    '__extends__': 'default',
+    'httpMethods': 'get',
+    'httpGroupMethods': 'get'                // true will result in duplicating httpMethods to httpGroupMethods
 }
 module.exports.authorized = {
-    "__extends__": "default",
-    "httpMethods": "get",
-    "httpGroupMethods": "get",
-    "permanentFilter": undefined
+    '__extends__': 'default',
+    'httpMethods': 'get',
+    'httpGroupMethods': 'get',
+    'permanentFilter': undefined
 };

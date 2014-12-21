@@ -44,11 +44,8 @@ keystone.set('locals', {
     utils: keystone.utils,
     editable: keystone.content.editable
 });
-
 // Load your project's Routes
-
 keystone.set('routes', require('./routes'));
-
 // Setup common locals for your emails. The following are required by Keystone's
 // default email templates, you may remove them if you're using your own.
 
@@ -95,14 +92,14 @@ keystone.set('nav', {
     'pages': 'pages',
     'printers': ['printers', 'countries' , 'companies'],
     'makers': 'makers',
-    'jobs': 'jobs'
+    'jobs': 'jobs',
+    'licenses': 'licenses'
 });
 
 
 keystone.set('resty api base address', "/api"); // you can omit this line, it is the same as the default and here for demo only.
 keystone.set('resty meta location', "./routes/api"); // provide the relative path from your project's root, to your Resource metadata folder.
-keystone.set('resty auth type', restyStone.AUTH_TYPE.SESSION); // keep KeystoneJS cookie based session for auth (use in dev only!)
+keystone.set('resty auth type', restyStone.AUTH_TYPE.TOKEN); // keep KeystoneJS cookie based session for auth (use in dev only!)
 keystone.set('resty token header', "api-token");
 // Start Keystone to connect to your database and initialise the web server
-//restyStone.start();
-keystone.start();
+keystone.start(restyStone.start());

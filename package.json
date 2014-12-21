@@ -20,7 +20,8 @@
         "passport-twitter": "^1.0.2",
         "request": "^2.34.0",
         "csv": "0.3.6",
-        "resty-stone": "^0.0.2-alpha"
+        "resty-stone": "^0.0.2-alpha",
+        "51degrees": "^1.3.10"
     },
     "devDependencies": {
         "gulp": "~3.6.2",

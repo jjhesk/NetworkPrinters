@@ -44,15 +44,21 @@ Printer.add({
         countryMaker: { type: Types.Relationship, ref: 'Country' },
         listed: { type: Boolean, default: false },
         createdAt: { type: Date, default: Date.now }
-    }, 'Product Size', {
+    },
+    'Product Size',
+    {
         buildVolume: {
             L: {type: Types.Number, format: false},
             W: {type: Types.Number, format: false},
             H: {type: Types.Number, format: false}
         }
-    }, 'Machine Image', {
+    },
+    'Machine Image',
+    {
         image: { type: Types.CloudinaryImage }
-    }, 'Cost Accounting', {
+    },
+    'Cost Accounting',
+    {
         currentPrice: {type: Types.Money},
         materialCost: {type: Types.Money},
         builtEffecticiency: {type: Types.Money}
@@ -62,8 +68,7 @@ Printer.add({
 Printer.defaultColumns = 'printerName, manufacturer, producedYear, currentPrice, listed';
 Printer.schema.methods.isPublished = function () {
     return this.listed == true;
-}
-
+};
 Printer.schema.pre('save', function (next) {
     if (this.isModified('state') && this.isPublished() && !this.publishedAt) {
         this.publishedAt = new Date();

@@ -30,6 +30,7 @@ keystone.pre('render', middleware.flashMessages);
 // Import Route Controllers
 var routes = {
     views: importRoutes('./views'),
+    api_register: importRoutes('./api/register'),
     download: importRoutes('./download')
 };
 
@@ -61,10 +62,13 @@ exports = module.exports = function (app) {
      app.all('/api/app/signup-email', routes.api.app['signup-email']);
      app.all('/api/app/signin-service', routes.api.app['signin-service']);
      app.all('/api/app/signin-service-check', routes.api.app['signin-service-check']);
-     app.all('/api/app/signin-recover', routes.api.app['signin-recover']);*/
+     app.all('/api/app/signin-recover', routes.api.app['signin-recover']);
+
+     */
 
     // Downloads
     app.get('/download/users', routes.download.users);
+    app.post('/api/register/addjob', routes.api_register.addjob);
     // API
     // app.get('/api*', keystone.initAPI);
     // app.get('/api/me/profile', routes.api.me.profile);

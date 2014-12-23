@@ -9,13 +9,29 @@ var keystone = require('keystone'),
 var User = new keystone.List('User');
 
 User.add({
-    name: { type: Types.Name, required: true, index: true },
-    email: { type: Types.Email, initial: true, required: true, index: true },
-    password: { type: Types.Password, initial: true, required: true },
-    cellPhone: { type: Types.Number },
-    vcoinID: { type: Types.Text, label: "vCoin Account UUID" }
+    name: {type: Types.Name, required: true, index: true},
+    email: {type: Types.Email, initial: true, required: true, index: true},
+    password: {type: Types.Password, initial: true, required: true},
+    cellPhone: {type: Types.Number},
+    vcoinID: {type: Types.Text, label: "vCoin Account UUID"},
+    customization: {type: Types.Color},
+    website: {type: String, label: "vCoin Account UUID"}
+}, 'Notification', {
+    notifications: {
+        posts: {type: String},
+        meetups: {type: String}
+    }
 }, 'Permissions', {
-    isAdmin: { type: Boolean, label: 'Can access Keystone', index: true }
+    state: {
+        type: Types.Select,
+        options: [
+            {value: 'enabled', label: 'Enabled'},
+            {value: 'disabled', label: 'Disabled'}
+        ],
+        default: 'enabled'
+    },
+    isVerified: {type: Boolean, label: 'Account Verification'},
+    isAdmin: {type: Boolean, label: 'Can access Keystone', index: true}
 });
 
 // Provide access to Keystone
@@ -23,17 +39,14 @@ User.schema.virtual('canAccessKeystone').get(function () {
     return this.isAdmin;
 });
 
-
 /**
  * Relationships
  */
-
-User.relationship({ ref: 'Maker', path: 'makerName' });
+User.relationship({ref: 'Maker', path: 'makerName'});
 
 
 /**
  * Registration
  */
-
 User.defaultColumns = 'name, email, isAdmin';
 User.register();

@@ -20,7 +20,6 @@ var h2 = crypto.createHash('sha1').update(current_date + random + "1").digest('h
 License.add({
     clientID: { type: String, initial: true, required: true},
     siteURL: { label: "Site URL Without WWW", type: String, initial: true, required: true},
-    wwwSiteURL: { label: "Site URL With WWW", type: String },
     brandingRemoval: { type: Boolean, default: false },
     key: {label: "License Key", type: String, default: h1},
     licenseHash: { type: String, default: h2 },

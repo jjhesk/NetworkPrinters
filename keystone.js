@@ -11,7 +11,7 @@ var keystone = require('keystone'),
 
 keystone.init({
 
-    'name': 'HKM',
+    'name': 'HkmInvention',
     'brand': 'HKM',
 
     'less': 'public',

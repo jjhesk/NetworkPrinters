@@ -22,16 +22,17 @@ User.add({
         meetups: {type: String}
     }
 }, 'Permissions', {
-    state: {
-        type: Types.Select,
-        options: [
-            {value: 'enabled', label: 'Enabled'},
-            {value: 'disabled', label: 'Disabled'}
-        ],
-        default: 'enabled'
-    },
-    isVerified: {type: Boolean, label: 'Account Verification'},
-    isAdmin: {type: Boolean, label: 'Can access Keystone', index: true}
+    /*   state: {
+     type: Types.Select,
+     options: [
+     {value: 'enabled', label: 'Enabled'},
+     {value: 'disabled', label: 'Disabled'}
+     ],
+     default: 'enabled'
+     },*/
+    role: {type: Types.Select, options: 'admin, licenseIssuer, driver, printerMaker, user', default: 'user'},
+    isAdmin: {type: Boolean, label: 'Can access Keystone', index: true},
+    isVerified: {type: Boolean, label: 'Account Verification'}
 });
 
 // Provide access to Keystone

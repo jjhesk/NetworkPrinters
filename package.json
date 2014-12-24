@@ -5,7 +5,8 @@
 
 
     "dependencies": {
-        "keystone": "~0.2.39",
+        "keystone": "~0.2.38",
+        "resty-stone": "0.0.32-alpha",
         "async": "~0.9.0",
         "underscore": "~1.7.0",
         "dotenv": "~0.4.0",
@@ -20,8 +21,6 @@
         "passport-twitter": "^1.0.2",
         "request": "^2.34.0",
         "csv": "0.3.6",
-        "resty-stone": "^0.0.32-alpha",
-        "resty-stone-customtypes": "^0.0.1-alpha",
         "51degrees": "^1.3.10"
     },
     "devDependencies": {

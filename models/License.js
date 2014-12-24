@@ -22,10 +22,12 @@ License.add({
     siteURL: {label: "Site URL Without WWW", type: String, initial: true, required: true},
     licensePerson: {type: Types.Relationship, ref: 'User', label: "License Issued By"},
     product: {type: Types.Relationship, ref: 'Product', label: "Licensed Product"},
-    createdAt: {label: "Issue Date", type: Date, default: Date.now, noedit: true}
+    createdAt: {type: Date, default: Date.now, noedit: true, label: "Issue Date"},
+    expire: {type: Date, default: Date.now, label: "Product Expiration"}
 }, 'DRM protection implementation', {
     brandingRemoval: {type: Boolean, default: false},
     demoDisplay: {type: Boolean, default: true},
+    useExpiration: {type: Boolean, default: true, label: "Apply Expiration Date"},
     licenseStatusLive: {type: Boolean, default: false}
 }, 'Secrets keys', {
     key: {label: "License Key", type: String, default: h1},
